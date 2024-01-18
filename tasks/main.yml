@@ -1,0 +1,15 @@
+---
+
+- name: Install iperf3
+  ansible.builtin.package:
+    name: "{{ iperf3_server_package }}"
+    state: present
+
+- name: Create iperf3 server service
+  ansible.builtin.template:
+    src: iperf3-server.service.j2
+    dest: "/etc/systemd/system/iperf3-server.service"
+    owner: root
+    group: root
+    mode: "0644"
+  notify: (Re)start iperf3 server service

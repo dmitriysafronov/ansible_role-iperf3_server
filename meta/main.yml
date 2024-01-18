@@ -1,9 +1,9 @@
 collections: []
 dependencies: []
 galaxy_info:
-  author: template
-  description: template
+  author: Dmitriy Safronov
+  description: Install & configure iperf3 server.
   license: Apache-2.0
   min_ansible_version: "2.16"
-  namespace: template
-  role_name: template
+  namespace: dmitriysafronov
+  role_name: iperf3_server
