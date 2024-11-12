@@ -24,7 +24,8 @@ jobs:
     strategy:
       max-parallel: 2
       matrix:
-        ansible: ["9", "latest"]
+        ansible: ["9", "10"]
+        python: ["3.10", "3.12"]
 
     steps:
       - name: Check out the codebase
@@ -33,7 +34,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: "${{ matrix.python }}"
           cache: "pip"
           cache-dependency-path: .requirements/${{ matrix.ansible }}.txt
 
