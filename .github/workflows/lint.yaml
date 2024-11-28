@@ -24,7 +24,7 @@ jobs:
     strategy:
       max-parallel: 2
       matrix:
-        ansible: ["9", "10"]
+        ansible: ["9", "11"]
         python: ["3.10", "3.12"]
 
     steps:
