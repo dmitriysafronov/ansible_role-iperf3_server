@@ -21,11 +21,21 @@ jobs:
     name: lint
     runs-on: ubuntu-latest
 
+    continue-on-error: ${{ matrix.experimental }}
     strategy:
-      max-parallel: 2
+      fail-fast: true
       matrix:
-        ansible: ["9", "11"]
-        python: ["3.10", "3.12"]
+        python: ["3.10", "3.x"]
+        ansible: ["9", "latest"]
+        experimental: [false]
+        include:
+          - python: "3.x"
+            ansible: "9"
+            experimental: true
+        exclude:
+          - python: "3.x"
+            ansible: "9"
+            experimental: false
 
     steps:
       - name: Check out the codebase
@@ -42,6 +52,7 @@ jobs:
         run: pip install --upgrade pip wheel
 
       - name: Install test dependencies
+        id: deps
         run: pip install -r .requirements/${{ matrix.ansible }}.txt
 
       - name: Run ansible-lint

@@ -6,12 +6,6 @@
 
 version: 2
 updates:
-  - package-ecosystem: "pip"
-    directory: "/.requirements"
-    schedule:
-      interval: "weekly"
-    labels:
-      - "dependencies"
   - package-ecosystem: "github-actions"
     directory: "/.github/workflows"
     schedule:

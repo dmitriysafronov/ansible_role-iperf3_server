@@ -5,6 +5,10 @@ git \
   https://github.com/dmitriysafronov/ansible_role-template.git \
   .update
 
+LATEST_TAG="$(git -C .update tag | grep -e '^v' | sort -V | tail -n 1)"
+
+git -C .update -c advice.detachedHead=false checkout ${LATEST_TAG}
+
 if [[ -s .update/update.list ]]; then
   rsync -av \
     --include-from=.update/update.list \
