@@ -2,7 +2,7 @@
 
 git \
   clone \
-  https://github.com/dmitriysafronov/ansible_role-template.git \
+  https://github.com/disafronov/ansible_role-template.git \
   .update
 
 LATEST_TAG="$(git -C .update tag | grep -e '^v' | sort -V | tail -n 1)"
